@@ -10,3 +10,9 @@ The following five types of recommendation systems are implemented, with each in
 
 ## Data
 Dataset taken from UCI machine learning repository. [link](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data)
+
+## Dependencies
+numpy, scipy, pandas
+
+Dependencies used for acceleration of calculations. All systems/models built from scratch and can be built without libraries.
+
