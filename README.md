@@ -9,4 +9,4 @@ The following five types of recommendation systems are implemented, with each in
 * _Content-based recommendation:_ Recommends items based on feature similarity. Uses kNN.
 
 ## Data
-Dataset taken from UCI machine learning database. [link](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data)
+Dataset taken from UCI machine learning repository. [link](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data)
