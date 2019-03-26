@@ -1,6 +1,8 @@
 # Small-Scale Recommendation System Prototypes
 Five different types of recommendation systems used by Amazon, Netflix, LinkedIn, etc.
 
+Each script is in OOP form. The system returns n recommendations in pandas DataFrame format.
+
 The following five types of recommendation systems are implemented, with each in a different script file:
 * _Popularity-based recommendation:_ Recommends items based on how 'popular' they are (impersonal).
 * _Correlation-based recommendation:_ Recommends items based on Pearson correlation between another from previous user ratings.
