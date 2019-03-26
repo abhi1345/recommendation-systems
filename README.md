@@ -5,16 +5,11 @@ Each script is in OOP form. The system returns recommendations in pandas DataFra
 
 ## The Code
 The following five types of recommendation systems are implemented, with each in a different script file:
-### Popularity-based recommendation
-Recommends items based on how 'popular' they are (impersonal).
-### Correlation-based recommendation
-Recommends items based on Pearson correlation between another from previous user ratings.
-### Classification-based collaborative filter
-Uses logistic regression to give personalized recommendation.
-### Model-based collaborative filter
-Build model from user ratings, make recommendations from model.
-### Content-based recommendation
-Recommends items based on feature similarity. Uses kNN.
+1. Popularity-based recommendation: Recommends items based on how 'popular' they are (impersonal).
+2. Correlation-based recommendation: Recommends items based on Pearson correlation between another from previous user ratings.
+3. Classification-based collaborative filter: Uses logistic regression to give personalized recommendation.
+4. Model-based collaborative filter: Build model from user ratings, make recommendations from model.
+5. Content-based recommendation: Recommends items based on feature similarity. Uses kNN.
 
 ## System API
 Each recommendation system uses the following interface:
@@ -28,6 +23,6 @@ The last 3 systems use machine learning models to aid in generating suggestion. 
 Dataset taken from UCI machine learning repository. [link](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data)
 
 ## Dependencies
-numpy, scipy, pandas
+numpy 1.15.4, scipy 1.1.0, pandas 0.23.4
 
 Dependencies used for acceleration of calculations. All systems/models built from scratch and can be built without libraries.
