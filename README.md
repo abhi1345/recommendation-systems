@@ -1,6 +1,6 @@
 # Small-Scale Recommendation System Prototypes
-Five different types of recommendation systems used by Amazon, Netflix, LinkedIn, etc.
-
+Five different types of recommendation systems used by Netflix, Amazon, LinkedIn, etc.
+![Netflix, Amazon, LinkedIn](cover.png "Companies")
 Each script is in OOP form. The system returns recommendations in pandas DataFrame format.
 
 ## The Code
@@ -17,7 +17,8 @@ Each recommendation system uses the following interface:
 * generate_recommendations(n): outputs a pandas DataFrame with n rows of recommendations (1 per row).
 
 ## The Models
-The last 3 systems use machine learning models to aid in generating suggestion. All models are in Python, based on pseudocode written by Johnathan Shewchuk in [Concise Machine Learning.](https://people.eecs.berkeley.edu/~jrs/papers/machlearn.pdf)
+The first 2 systems create simple recommendations based on activity of previous users.
+The last 3 systems use machine learning to aid in generating personalized suggestions. All models are in Python, based on pseudocode written by Johnathan Shewchuk in [Concise Machine Learning.](https://people.eecs.berkeley.edu/~jrs/papers/machlearn.pdf)
 
 ## The Data
 Dataset taken from UCI machine learning repository. [link](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data)
