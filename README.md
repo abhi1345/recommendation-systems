@@ -24,6 +24,6 @@ The last 3 systems use machine learning to aid in generating personalized sugges
 Dataset taken from UCI machine learning repository. [link](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data)
 
 ## Dependencies
-numpy 1.15.4, scipy 1.1.0, pandas 0.23.4, sklearn 0.20.0
+numpy 1.15.4, scipy 1.1.0, pandas 0.23.4,
 
 Dependencies used for acceleration of calculations. All systems/models built from scratch and can be built without libraries.
