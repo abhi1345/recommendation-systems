@@ -18,12 +18,12 @@ Each recommendation system uses the following interface:
 
 ## The Models
 The first 2 systems create simple recommendations based on activity of previous users.
-The last 3 systems use machine learning to aid in generating personalized suggestions. All models are in Python, based on pseudocode written by Johnathan Shewchuk in [Concise Machine Learning.](https://people.eecs.berkeley.edu/~jrs/papers/machlearn.pdf)
+The last 3 systems use machine learning to aid in generating personalized suggestions. The Logistic Regression and k Nearest Neighbors models are in Python, based on pseudocode written by Johnathan Shewchuk in [Concise Machine Learning.](https://people.eecs.berkeley.edu/~jrs/papers/machlearn.pdf). The Singular Value Decomposition for model-based recommendation is implemented using scikit-learn.
 
 ## The Data
 Dataset taken from UCI machine learning repository. [link](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data)
 
 ## Dependencies
-numpy 1.15.4, scipy 1.1.0, pandas 0.23.4
+numpy 1.15.4, scipy 1.1.0, pandas 0.23.4, sklearn 0.20.0
 
 Dependencies used for acceleration of calculations. All systems/models built from scratch and can be built without libraries.

@@ -6,6 +6,9 @@ class PopularitySystem:
     def __init__(self):
         self.recommendations = False
 
+    def __repr__(self):
+        return "Popularity Based Restaurant Recommendation System."
+
     def generate_recommendations(self, n=5):
         if not isinstance(self.recommendations, pd.DataFrame):
             #Loading Datasets

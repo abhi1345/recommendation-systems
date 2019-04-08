@@ -1,42 +1,50 @@
 import numpy as np
 import pandas as pd
+from models.SVD import *
 
-import sklearn
-from sklearn.decomposition import TruncatedSVD
+class ModelSystem:
 
-columns = ['user_id', 'item_id', 'rating', 'timestamp']
-frame = pd.read_csv('ml-100k/u.data', sep='\t', names=columns)
+    def __init__(self):
+        self.name = "Model Based Movie Recommendation System. Uses Singular Value Decomposition"
+        self.trained = False
 
-columns = ['item_id', 'movie title', 'release date', 'video release date', 'IMDb URL', 'unknown', 'Action', 'Adventure',
-          'Animation', 'Childrens', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir', 'Horror',
-          'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western']
+    def __repr__(self):
+        return self.name + "Trained: {}".format(self.trained)
 
-movies = pd.read_csv('ml-100k/u.item', sep='|', names=columns, encoding='latin-1')
-movie_names = movies[['item_id', 'movie title']]
+    def train(self):
+        #Load Data
+        columns = ['user_id', 'item_id', 'rating', 'timestamp']
+        frame = pd.read_csv('data/ml-100k/u.data', sep='\t', names=columns)
+        columns = ['item_id', 'movie title', 'release date', 'video release date', 'IMDb URL', 'unknown', 'Action', 'Adventure',
+                  'Animation', 'Childrens', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir', 'Horror',
+                  'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western']
+        movies = pd.read_csv('data/ml-100k/u.item', sep='|', names=columns, encoding='latin-1')
+        movie_names = movies[['item_id', 'movie title']]
 
-combined_movies_data = pd.merge(frame, movie_names, on='item_id')
-filter = combined_movies_data['item_id']==50
+        self.combined_movies_data = pd.merge(frame, movie_names, on='item_id')
 
-rating_crosstab = combined_movies_data.pivot_table(values='rating', index='user_id', columns='movie title', fill_value=0)
+        rating_crosstab = self.combined_movies_data.pivot_table(values='rating', index='user_id', columns='movie title', fill_value=0)
 
-X = rating_crosstab.T
+        X = rating_crosstab.T
 
-SVD = TruncatedSVD(n_components=12, random_state=17)
+        resultant_matrix= svd_fit(X, 12)
 
-resultant_matrix = SVD.fit_transform(X)
+        self.corr_mat = np.corrcoef(resultant_matrix)
+        self.movie_names = rating_crosstab.columns
+        self.movies_list = list(self.movie_names)
+        self.trained = True
 
+        return self
 
-corr_mat = np.corrcoef(resultant_matrix)
-
-movie_names = rating_crosstab.columns
-movies_list = list(movie_names)
-
-star_wars = movies_list.index('Star Wars (1977)')
-
-
-corr_star_wars = corr_mat[1398]
-list(movie_names[(corr_star_wars<1.0) & (corr_star_wars > 0.9)])
-
-list(movie_names[(corr_star_wars<1.0) & (corr_star_wars > 0.95)])
-
-corr_star_wars
+    def generate_recommendations(self, name, n):
+        if not self.trained: #Training once avoids unnecessary computation
+            self.train()
+        relevant_index = self.movies_list.index(name)
+        relevant_correlations = np.round(self.corr_mat[relevant_index], 3)
+        ans = []
+        corr = 0.999
+        i = n
+        while i >= 0 and len(ans) < n:
+            ans.extend(list(self.movie_names[(relevant_correlations == round(i, 3))]))
+            i -= 0.001
+        return ans[:n]

@@ -6,6 +6,9 @@ class CorrelationSystem:
     def __init__(self):
         self.recommendations = [] #Empty set at construction
 
+    def __repr__(self):
+        return "Correlation Based Restaurant Recommendation System. Uses Pearson Correlation."
+
     def generate_matrix(self):
         """
         @output: null, but saves correlation matrix to memory
