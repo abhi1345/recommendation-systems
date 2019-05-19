@@ -5,6 +5,7 @@ import pandas as pd
 class CorrelationSystem:
     def __init__(self):
         self.recommendations = [] #Empty set at construction
+        self.trained = False
 
     def __repr__(self):
         return "Correlation Based Restaurant Recommendation System. Uses Pearson Correlation."
@@ -21,6 +22,7 @@ class CorrelationSystem:
         self.rating['rating_count'] = pd.DataFrame(self.frame.groupby('placeID')['rating'].count())
         #Pivot table of each user's rating for each place
         self.places_crosstab = pd.pivot_table(data=self.frame, values='rating', index='userID', columns='placeID')
+        self.trained = True
         return self.places_crosstab
 
     def generate_recommendations(self, name="Restaurante Tiberius", n=5):
@@ -31,6 +33,8 @@ class CorrelationSystem:
         @output: a pandas DataFrame with n rows of recommendations
             - ordered in decreasing strength of correlation
         """
+        if not self.trained:
+            self.generate_matrix()
         #load data\
         pid = int(self.geodata[self.geodata['name'] == name]['placeID'])
         relevant_ratings = self.places_crosstab[pid]
@@ -39,7 +43,7 @@ class CorrelationSystem:
         similar_table = self.places_crosstab.corrwith(relevant_ratings)
         correlations = pd.DataFrame(similar_table, columns=['PearsonR'])
         correlations.dropna(inplace=True)
-        #
+        
         corr_summary = correlations.join(self.rating['rating_count'])
         relevant_table = corr_summary[corr_summary['rating_count']>=10].sort_values('PearsonR', ascending=False)
         summary = pd.merge(relevant_table, self.cuisine,on='placeID')

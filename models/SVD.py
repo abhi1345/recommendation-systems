@@ -1,6 +1,8 @@
 import numpy as np
 from scipy.sparse.linalg import svds
 
+#Singular Value Decomposition
+
 def svd_flip(u, v, u_based_decision=True):
     if u_based_decision:
         max_abs_cols = np.argmax(np.abs(u), axis=0)
@@ -13,7 +15,6 @@ def svd_flip(u, v, u_based_decision=True):
         u *= signs
         v *= signs[:, np.newaxis]
     return u, v
-
 
 def svd_fit(X, n):
     U, Sigma, VT = svds(X, k=n)

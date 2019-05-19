@@ -22,5 +22,6 @@ class ClassificationSystem:
 
     def generate_recommendations(self, new_user=global_var_user):
         y_pred = self.model.predict(np.array([new_user]))
-        map = ["no", "yes"]
+        map = ["User's preferences indicate that they should NOT be recommended this product.",
+        "User's preferences indicate that they should be recommended this product."]
         return map[int(y_pred)]
