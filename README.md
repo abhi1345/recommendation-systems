@@ -1,6 +1,6 @@
 # Small-Scale Recommendation System Prototypes
 Five different types of recommendation systems used by Netflix, Amazon, LinkedIn, etc.
-![Netflix, Amazon, LinkedIn](cover.png "Companies")
+![Netflix, Amazon, LinkedIn](misc/cover.png "Companies")
 Each script is in OOP form. The system returns recommendations in pandas DataFrame format.
 
 ## The Code
