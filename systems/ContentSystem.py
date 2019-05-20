@@ -26,8 +26,3 @@ class ContentSystem:
         neighbors = self.model.classify(x, n)
         n_index = [x[1] for x in neighbors]
         return self.dataset.ix[n_index, :]
-
-
-test = [15, 300, 160, 3.2]
-sys = ContentSystem()
-print(sys.generate_recommendations(test))
