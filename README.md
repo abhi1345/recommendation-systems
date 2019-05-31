@@ -18,7 +18,7 @@ Each recommendation system uses the following interface:
 
 ## The Models
 The first 2 systems create simple recommendations based on activity of previous users.
-The last 3 systems use machine learning to aid in generating personalized suggestions. The Logistic Regression and k Nearest Neighbors models are in Python, based on pseudocode written by Johnathan Shewchuk in [Concise Machine Learning.](https://people.eecs.berkeley.edu/~jrs/papers/machlearn.pdf). The Singular Value Decomposition for model-based recommendation is implemented using scikit-learn.
+The last 3 systems use machine learning to aid in generating personalized suggestions. The Logistic Regression and k Nearest Neighbors models are in Python, based on pseudocode written by Johnathan Shewchuk in [Concise Machine Learning](https://people.eecs.berkeley.edu/~jrs/papers/machlearn.pdf). The Singular Value Decomposition for model-based recommendation is implemented using scikit-learn.
 
 ## The Data
 Dataset taken from UCI machine learning repository. [link](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data)
